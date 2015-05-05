@@ -28,7 +28,7 @@ Angular pour réaliser le front
 
 > bower install angular#1.3.15 --save
 
-## launch
+## Launch project
 
 Lancement des tasks grunt
 
