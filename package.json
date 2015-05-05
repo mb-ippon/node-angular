@@ -6,7 +6,8 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-cssmin": "^0.12.2",
-    "grunt-contrib-uglify": "^0.9.1"
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-shell": "^1.1.2"
   },
   "variable": {
     "src_root": "src",

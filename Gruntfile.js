@@ -49,6 +49,11 @@ module.exports = function(grunt) {
 					dest: '<%= pkg.variable.build_root %>'
 				}]
 			}
+		},
+		shell: {
+			node : {
+				command: 'node <%= pkg.variable.build_root %>/server.js'
+			}
 		}
 	});
 
@@ -57,11 +62,7 @@ module.exports = function(grunt) {
 	//grunt.loadNpmTasks('grunt-contrib-uglify');
 	//grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-shell');
 
-//	grunt.registerTask('server','lance le serveur', function () {
-//		grunt.log.writeln('Started web server on port 3000');
-//	    require('./server.js').listen(3000);
-//	});
-
-	grunt.registerTask('build_dev', ['clean','copy']);
+	grunt.registerTask('build_dev', ['clean','copy','shell:node']);
 };

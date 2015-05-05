@@ -28,12 +28,13 @@ Angular pour réaliser le front
 
 > bower install angular#1.3.15 --save
 
+Grunt-shell pour lancer node en dev
+
+> npm install grunt-shell
+
 ## Launch project
 
 Lancement des tasks grunt
 
 > grunt build_dev
 
-Lancement du server express
-
-> npm build/server.js
