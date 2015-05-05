@@ -1,0 +1,19 @@
+{
+  "name": "node-angular",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-cssmin": "^0.12.2",
+    "grunt-contrib-uglify": "^0.9.1"
+  },
+  "variable": {
+    "src_root": "src",
+    "build_root": "build",
+    "src_css": "css"
+  },
+  "dependencies": {
+    "express": "^4.12.3"
+  }
+}
