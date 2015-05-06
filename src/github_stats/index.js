@@ -9,16 +9,16 @@
 
 // imports
 var github_stats_dao = require('./dao/github_csv_dao');
-
-// variables
-var dao = github_stats_dao();
+var github_stats_router = require('./github_stats_router');
 
 // déclaration du module
 var github_stats = function() {
 	//initialisation de la bdd
-	dao.init();
+	github_stats_dao.init();
 	
-	return {};
+	return {
+		router : github_stats_router
+	};
 };
 
 module.exports = github_stats;

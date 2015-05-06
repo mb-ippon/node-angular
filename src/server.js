@@ -13,11 +13,9 @@ var stats = github_stats();
 
 //launch express server
 var app = express();
-// lance module github stats permettant d'obtenir des stats sur les langages des repos github de q4 2014
 
-app.get('/', function (req, res) {
-	res.send('Hello World!');
-});
+//router l'api rest
+app.use("/api", stats.router);
 
 var server = app.listen(3000, function () {
 
