@@ -15,6 +15,7 @@
     "src_css": "css"
   },
   "dependencies": {
+    "csv": "^0.4.2",
     "express": "^4.12.3"
   }
 }

@@ -43,9 +43,9 @@ module.exports = function(grunt) {
 		copy: {
 			main: {
 				files: [{
-					expand: true, 
-					cwd: '<%= pkg.variable.src_root %>', 
-					src: ['*.js'], 
+					expand: true,
+					cwd: '<%= pkg.variable.src_root %>',
+					src: ['**'],
 					dest: '<%= pkg.variable.build_root %>'
 				}]
 			}

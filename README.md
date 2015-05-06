@@ -30,7 +30,12 @@ Angular pour réaliser le front
 
 Grunt-shell pour lancer node en dev
 
-> npm install grunt-shell
+> npm install grunt-shell --save-dev
+
+Node csv pour gérer une pseudo bdd au format csv
+
+> npm install csv --save
+
 
 ## Launch project
 
