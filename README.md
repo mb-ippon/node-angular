@@ -1,7 +1,7 @@
 # node-angular
 
 Projet d'intégration d'une stack basé sur node, bower, grunt et angular
-Intégration de librairie annexe jshint
+Intégration de librairies annexes jshint, jasmine
 
 ## Install
 
@@ -36,10 +36,14 @@ Node csv pour gérer une pseudo bdd au format csv
 
 > npm install csv --save
 
+Intégration jasmine/node pour tester le back
+
+> npm install jasmine-node -g --save-dev
+
 
 ## Launch project
 
-Lancement des tasks grunt
+Lancement en dev d'un serveur express js, sur le port 3000. Exécute les specs jasmine avant de lancer le serveur.
 
 > grunt build_dev
 

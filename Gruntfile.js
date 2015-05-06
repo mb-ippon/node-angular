@@ -40,12 +40,33 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
+		jasmine_nodejs : {
+			// task specific (default) options
+			options: {
+				specNameSuffix: "spec.js", // also accepts an array
+				stopOnFailure: true,
+				// configure one or more built-in reporters
+				reporters: {
+					console: {
+						colors: true,
+						cleanStack: 1,       // (0|false)|(1|true)|2|3
+						verbosity: 3,        // (0|false)|1|2|(3|true)
+						listStyle: "indent", // "flat"|"indent"
+						activity: false
+					}
+				}
+			},
+			back_spec: {
+				// spec files
+				specs: ["<%= pkg.variable.src_specs %>**"]
+			}
+		},
 		copy: {
 			main: {
 				files: [{
 					expand: true,
 					cwd: '<%= pkg.variable.src_root %>',
-					src: ['**'],
+					src: ['**', '!<%= pkg.variable.src_specs %>/**'],
 					dest: '<%= pkg.variable.build_root %>'
 				}]
 			}
@@ -63,6 +84,7 @@ module.exports = function(grunt) {
 	//grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-shell');
+	grunt.loadNpmTasks('grunt-jasmine-nodejs');
 
-	grunt.registerTask('build_dev', ['clean','copy','shell:node']);
+	grunt.registerTask('build_dev', ['clean','jasmine_nodejs:back_spec','copy','shell:node']);
 };
