@@ -68,6 +68,18 @@ module.exports = function(grunt) {
 					cwd: '<%= pkg.variable.src_root %>',
 					src: ['**'],
 					dest: '<%= pkg.variable.build_root %>'
+				},
+				{
+					expand: true,
+					cwd: '<%= pkg.variable.html_root %>',
+					src: ['**'],
+					dest: '<%= pkg.variable.build_root %>/public'
+				},
+				{
+					expand: true,
+					cwd: '<%= pkg.variable.bower_root %>',
+					src: ['**'],
+					dest: '<%= pkg.variable.build_root %>/public/lib/'
 				}]
 			}
 		},

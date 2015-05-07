@@ -11,12 +11,16 @@
     "grunt-shell": "^1.1.2"
   },
   "dependencies": {
+    "compress": "^0.99.0",
+    "compression": "^1.4.3",
     "csv": "^0.4.2",
     "express": "^4.12.3"
   },
   "variable": {
     "src_root": "src",
     "build_root": "build",
+    "html_root": "html",
+    "bower_root": "bower_components",
     "src_specs": "spec",
     "src_css": "css"
   }
