@@ -10,7 +10,6 @@
 var express = require('express');
 var compression = require('compression');
 var github_stats = require('./github_stats');
-var public_router = require('./public/public_router');
 var config = require("./config");
 
 

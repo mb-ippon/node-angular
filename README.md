@@ -27,6 +27,7 @@ Express pour le server http
 Angular pour réaliser le front
 
 > bower install angular#1.3.15 --save
+> bower install angular-resource --save
 
 Grunt-shell pour lancer node en dev
 
@@ -39,6 +40,10 @@ Node csv pour gérer une pseudo bdd au format csv
 Intégration jasmine/node pour tester le back
 
 > npm install jasmine-node -g --save-dev
+
+D3js pour dessiner des graph
+
+> bower install d3 --save
 
 
 ## Launch project

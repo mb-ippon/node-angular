@@ -1,13 +1,17 @@
-<html lang="fr">
+<!DOCTYPE html>
+<html lang="fr" ng-app="node-angular">
 <head>
 	<meta charset="utf-8">
 	<meta name="author" content="Mathieu Bellange">
 	<meta name="description" content="Application node angular">
-	<title>grunt tasks tests</title>
-	<script type="text/javascript" src="lib/angular/angular.min.js"></script>
+	<title>a node angular project</title>
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular-resource/angular-resource.js"></script>
+	<script src="lib/d3/d3.min.js"></script>
+	<script src="index.js"></script>
+	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
 </head>
-<body>
-Welcome
-<body>
+<body ng-controller="github-stats-controller">
+	<h1>{{title}}</h1>
 </body>
 </html>
