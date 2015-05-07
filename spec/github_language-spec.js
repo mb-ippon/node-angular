@@ -6,7 +6,7 @@
 'use strict';
 
 //imports
-var github_language = require('../github_stats/dao/github_language');
+var github_language = require('../src/github_stats/dao/github_language');
 
 describe("vérification du bean github_language", function () {
 	

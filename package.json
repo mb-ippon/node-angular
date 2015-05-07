@@ -17,7 +17,7 @@
   "variable": {
     "src_root": "src",
     "build_root": "build",
-    "src_specs": "src/specs",
+    "src_specs": "spec",
     "src_css": "css"
   }
 }

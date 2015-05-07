@@ -58,7 +58,7 @@ module.exports = function(grunt) {
 			},
 			back_spec: {
 				// spec files
-				specs: ["<%= pkg.variable.src_specs %>**"]
+				specs: ["<%= pkg.variable.src_specs %>/**"]
 			}
 		},
 		copy: {
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: '<%= pkg.variable.src_root %>',
-					src: ['**', '!<%= pkg.variable.src_specs %>/**'],
+					src: ['**'],
 					dest: '<%= pkg.variable.build_root %>'
 				}]
 			}
