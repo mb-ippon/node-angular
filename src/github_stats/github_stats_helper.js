@@ -28,7 +28,7 @@ var github_stats_util = function(){
 					github_lang.add_type(github_stat[1],github_stat[2]);
 				}else{
 					if (github_stat[0] === "Java" || github_stat[0] === "JavaScript" ||
-							github_stat[0] === "C++" || github_stat[0] === "C#"){
+							github_stat[0] === "C++" || github_stat[0] === "C#" || github_stat[0] === "C" || github_stat[0] === "PHP"){
 						github_lang = new github_language(github_stat[0],github_stat[1],github_stat[2],github_stat[3]);
 						github_langs.push(github_lang);
 					}
