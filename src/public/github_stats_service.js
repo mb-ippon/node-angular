@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('github-stats-service',[]).factory('githubStatsService',function($http){
+angular.module('github-stats-service',[]).factory('githubStatsService',['$http', function($http){
 	
 	var getAllGithubData = function(onSuccess) {
 		$http.get('api/github-stats')
@@ -15,4 +15,4 @@ angular.module('github-stats-service',[]).factory('githubStatsService',function(
 	return {
 		getAllGithubData : getAllGithubData
 	}
-});
+}]);
