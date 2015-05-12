@@ -1,26 +1,26 @@
 'use strict';
-var events = [{name : "IssuesEvent", ratio : 50}, {name : "WatchEvent", ratio : 100}, {name : "CreateEvent", ratio : 1}, {name : "PushEvent", ratio : 1000}, {name : "ForkEvent", ratio : 50}];
+var node_angular_app = angular.module('node-angular',['github-stats-service']);
 
-var node_angular_app = angular.module('node-angular',[]);
-
-node_angular_app.controller('github-stats-controller', function ($scope, $http) {
+node_angular_app.controller('github-stats-controller', ['githubStatsService','$scope','$http',function (githubStatsService, $scope, $http) {
+	
+	var events = [{name : "IssuesEvent", ratio : 50}, {name : "WatchEvent", ratio : 100}, {name : "CreateEvent", ratio : 1}, {name : "PushEvent", ratio : 1000}, {name : "ForkEvent", ratio : 50}];
+	
 	$scope.title = "Github statistiques - q4 2014";
 
 	$scope.changeGithubData = function(){
-		if ($scope.currentTypeIndex === events.length - 1){
-			$scope.currentTypeIndex = 0;
+		if ($scope.dataIndex === 4){
+			$scope.dataIndex = 0;
 		}else{
-			$scope.currentTypeIndex++;// = $scope.currentTypeIndex + 1;
+			$scope.dataIndex++;
 		}
-		$scope.buildChart();
+		d3Chart($scope.data,$scope.dataIndex);
 	}
-
-	//affichage du bar chart
-	$scope.buildChart = function(){
-		d3.select(".chart h3").text(events[$scope.currentTypeIndex].name);
+	
+	var d3Chart = function(data, dataIndex){
+		d3.select(".chart h3").text(events[dataIndex].name);
 		var chart = d3.select(".chart")
 						.selectAll("div")
-						.data($scope.data,function(d){
+						.data(data,function(d){
 							return d.language;
 						});
 		
@@ -29,8 +29,8 @@ node_angular_app.controller('github-stats-controller', function ($scope, $http) 
 		chart.style("width", function(d) { 
 				var width = "0px";
 				d.types.forEach(function(type){
-					if (type.type === events[$scope.currentTypeIndex].name){
-						width = type.nb_repos /events[$scope.currentTypeIndex].ratio + "px"; 
+					if (type.type === events[dataIndex].name){
+						width = type.nb_repos / events[dataIndex].ratio + "px"; 
 					}
 				});
 				return width;
@@ -41,20 +41,16 @@ node_angular_app.controller('github-stats-controller', function ($scope, $http) 
 		
 		chart.exit().remove();
 	}
-	
-	//request
+
+	//init
 	$scope.populateGihtubDatas = function(){
-		$http.get('api/github-stats').
-		success(function(data, status, headers, config) {
-			$scope.currentTypeIndex = 0;
+		githubStatsService.getAllGithubData(function(data, status, headers, config){
 			$scope.data = data;
-			$scope.buildChart();
-		}).
-		error(function(data, status, headers, config) {
-			// log error
+			$scope.dataIndex = 0;
+			d3Chart($scope.data,$scope.dataIndex);
 		});
 	}
 
 	//run populate
 	$scope.populateGihtubDatas();
-});
+}]);
