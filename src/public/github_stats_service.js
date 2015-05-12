@@ -2,9 +2,11 @@
 
 angular.module('github-stats-service',[]).factory('githubStatsService',function($http){
 	
-	var getAllGithubData = function(success) {
+	var getAllGithubData = function(onSuccess) {
 		$http.get('api/github-stats')
-			.success(success)
+			.success(function(data, status, headers, config) {
+				onSuccess(data);
+			})
 			.error(function(data, status, headers, config) {
 				// log error
 			});

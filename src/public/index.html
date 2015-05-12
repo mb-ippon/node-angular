@@ -25,7 +25,7 @@
 	<body ng-controller="github-stats-controller">
 		<h1>{{title}}</h1>
 		<div class="chart">
-			<h3></h3>
+			<h3 ng-dataIndex >{{under_title}}</h3>
 		</div>
 		<button ng-click="changeGithubData()" class="btn btn-default" type="button">Change</button>
 	</body>

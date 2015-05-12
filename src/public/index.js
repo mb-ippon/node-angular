@@ -6,6 +6,18 @@ node_angular_app.controller('github-stats-controller', ['githubStatsService','$s
 	var events = [{name : "IssuesEvent", ratio : 50}, {name : "WatchEvent", ratio : 100}, {name : "CreateEvent", ratio : 1}, {name : "PushEvent", ratio : 1000}, {name : "ForkEvent", ratio : 50}];
 	
 	$scope.title = "Github statistiques - q4 2014";
+	
+	var github_data;
+	
+	// exemple d'une instruction watch sur le changement de données
+	$scope.$watch(
+			function(){return github_data},
+			function(newValue, oldValue) {
+				if (newValue){
+					d3Chart(newValue, $scope.dataIndex);
+				}
+			}
+	);
 
 	$scope.changeGithubData = function(){
 		if ($scope.dataIndex === 4){
@@ -13,11 +25,12 @@ node_angular_app.controller('github-stats-controller', ['githubStatsService','$s
 		}else{
 			$scope.dataIndex++;
 		}
-		d3Chart($scope.data,$scope.dataIndex);
+		d3Chart(github_data, $scope.dataIndex);
 	}
 	
 	var d3Chart = function(data, dataIndex){
-		d3.select(".chart h3").text(events[dataIndex].name);
+		$scope.under_title = events[dataIndex].name;
+		
 		var chart = d3.select(".chart")
 						.selectAll("div")
 						.data(data,function(d){
@@ -43,14 +56,13 @@ node_angular_app.controller('github-stats-controller', ['githubStatsService','$s
 	}
 
 	//init
-	$scope.populateGihtubDatas = function(){
-		githubStatsService.getAllGithubData(function(data, status, headers, config){
-			$scope.data = data;
+	var populateGihtubDatas = function(){
+		githubStatsService.getAllGithubData(function(data){
 			$scope.dataIndex = 0;
-			d3Chart($scope.data,$scope.dataIndex);
+			github_data = data;
 		});
 	}
 
 	//run populate
-	$scope.populateGihtubDatas();
+	populateGihtubDatas();
 }]);
