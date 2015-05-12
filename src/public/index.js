@@ -10,14 +10,20 @@ node_angular_app.controller('github-stats-controller', ['githubStatsService','$s
 	var github_data;
 	
 	// exemple d'une instruction watch sur le changement de données
-	$scope.$watch(
-			function(){return github_data},
-			function(newValue, oldValue) {
-				if (newValue){
-					d3Chart(newValue, $scope.dataIndex);
-				}
-			}
-	);
+//	$scope.$watch(
+//			function(){return github_data},
+//			function(newValue, oldValue) {
+//				if (newValue){
+//					d3Chart(newValue, $scope.dataIndex);
+//				}
+//			}
+//	);
+	
+	$scope.$watch("dataIndex",function(newValue, oldValue) {
+		if (newValue != oldValue){
+			d3Chart(github_data, newValue);
+		}
+	},true);
 
 	$scope.changeGithubData = function(){
 		if ($scope.dataIndex === 4){
@@ -25,7 +31,6 @@ node_angular_app.controller('github-stats-controller', ['githubStatsService','$s
 		}else{
 			$scope.dataIndex++;
 		}
-		d3Chart(github_data, $scope.dataIndex);
 	}
 	
 	var d3Chart = function(data, dataIndex){
@@ -58,8 +63,8 @@ node_angular_app.controller('github-stats-controller', ['githubStatsService','$s
 	//init
 	var populateGihtubDatas = function(){
 		githubStatsService.getAllGithubData(function(data){
-			$scope.dataIndex = 0;
 			github_data = data;
+			$scope.dataIndex = 0;
 		});
 	}
 
